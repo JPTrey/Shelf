@@ -100,11 +100,12 @@
 			<h1 class="section-title">Lengthy <span class="sidebar">(less than an hour)</span></h1>
 			<!-- <hr> -->
 			@foreach ($articles['lengthy'] as $article)
-				<div class="col-sm-8 article-block">
-					<a class="article-link" href="{{url('/content/show/' . $article->id)}}"><h4 class="article-name">{{ $article->name }}</h4></a>
-					<p class="read-speed">{{ ceil($article->word_count / $user->words_per_minute) }} min</p>
-				</div>
-				
+				<a class="article-link" href="{{url('/content/show/' . $article->id)}}">
+					<div class="col-sm-8 article-block">
+						<h4 class="article-name">{{ $article->name }}</h4>
+						<p class="read-speed">{{ ceil($article->word_count / $user->words_per_minute) }} min</p>
+					</div>
+				</a>
 			@endforeach
 		</div> <!-- END ROW 1 hr -->
 		@endif
@@ -114,11 +115,12 @@
 			<h1 class="section-title">Books and Texts <span class="sidebar">(over an hour)</span></h1>
 			<!-- <hr> -->
 			@foreach ($articles['long'] as $article)
+				<a class="article-link" href="{{url('/content/show/' . $article->id)}}">	
 					<div class="col-sm-8 article-block">
-					<a class="article-link" href="{{url('/content/show/' . $article->id)}}"><h4 class="article-name">{{ $article->name }}</h4></a>
-					<p class="read-speed">{{ ceil(($article->word_count / $user->words_per_minute) / 60) }} hrs</p>
-				</div>
-				
+						<h4 class="article-name">{{ $article->name }}</h4>
+						<p class="read-speed">{{ ceil(($article->word_count / $user->words_per_minute) / 60) }} hrs</p>
+					</div>
+				</a>
 			@endforeach
 		</div> <!-- END ROW long -->
 		@endif
