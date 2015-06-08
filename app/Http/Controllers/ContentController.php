@@ -30,6 +30,8 @@ class ContentController extends Controller {
 		// get article
 		$article = Shelf\Article::findOrFail($article_id);
 		
+		echo "article found!";
+		
 		// // get bookmark, if present
 		// $bookmark_id = DB::table('bookmarks')->where
 		// 	(
