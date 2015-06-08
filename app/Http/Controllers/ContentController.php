@@ -51,7 +51,9 @@ class ContentController extends Controller {
 		// 		'bookmark' => $bookmark
 		// 	]
 		// );
-
+		
+		echo "loading view...";
+		
 		return view('content.article',
 			[
 				'article' => $article,
