@@ -1,11 +1,11 @@
-<?php namespace App\Http\Controllers;
+<?php namespace Shelf\Http\Controllers;
 
 use App;
 use Input;
 use DB;
 use Auth;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Shelf\Http\Requests;
+use Shelf\Http\Controllers\Controller;
 use Sunra\PhpSimple\HtmlDomParser;
 use Illuminate\Http\Request;
 
@@ -28,7 +28,7 @@ class ContentController extends Controller {
 		$bookmark = 0;
 		
 		// get article
-		$article = App\Article::findOrFail($article_id);
+		$article = Shelf\Article::findOrFail($article_id);
 		
 		// // get bookmark, if present
 		// $bookmark_id = DB::table('bookmarks')->where
@@ -39,7 +39,7 @@ class ContentController extends Controller {
 		// 	->first();
 		// if (isset($bookmark_id))
 		// {
-		// 	$bookmark = App\Bookmark::find($bookmark_id);
+		// 	$bookmark = Shelf\Bookmark::find($bookmark_id);
 		// }
 
 		// $estimate = ceil(($article->word_count - $bookmark->word_count) / Auth::user()->words_per_minute);	
@@ -87,7 +87,7 @@ class ContentController extends Controller {
 		else 
 		{
 			$has_tags = true;	
-			$article = new App\Article;
+			$article = new Shelf\Article;
 			$article->content = $text;
 			return view('content.article', 
 				[
@@ -118,7 +118,7 @@ class ContentController extends Controller {
 	 */
 	public function store()
 	{
-		$article = new App\Article;
+		$article = new Shelf\Article;
 		$article->url = Input::get('url');
 		$article->user_id = Auth::user()->id;
 		$dom = HtmlDomParser::file_get_html($article->url);
@@ -157,13 +157,7 @@ class ContentController extends Controller {
 		// remove excess tags
 		// get site_id
 
-		return view('content.article', 
-			[
-				'msg' => 'Your article was added successfully.',
-				'article' => $article,
-				'has_tags' => true
-			]
-		);
+		return redirect('/');
 	}
 
 	/**

@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace Shelf\Services;
 
-use App\User;
+use Shelf\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
