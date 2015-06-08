@@ -118,11 +118,19 @@ class ContentController extends Controller {
 	 */
 	public function store()
 	{
+		echo "storing article: " . Input::get('url');
+		
 		$article = new Shelf\Article;
 		$article->url = Input::get('url');
 		$article->user_id = Auth::user()->id;
 		$dom = HtmlDomParser::file_get_html($article->url);
 		$text = $this->getText($dom);
+		
+		echo "\n $dom = ";
+		var_dump($dom);
+		
+		echo "\n $text = ";
+		var_dump($text);
 
 		if (Input::get('check-media'))
 		{
