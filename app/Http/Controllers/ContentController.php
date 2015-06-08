@@ -1,7 +1,6 @@
 <?php namespace Shelf\Http\Controllers;
 
 use Shelf\Article;
-use Shelf\User;
 use Input;
 use DB;
 use Auth;
@@ -29,7 +28,7 @@ class ContentController extends Controller {
 		$bookmark = 0;
 		
 		// get article
-		$article = Shelf\Article::findOrFail($article_id);
+		$article = Article::findOrFail($article_id);
 		
 		// // get bookmark, if present
 		// $bookmark_id = DB::table('bookmarks')->where
@@ -119,7 +118,7 @@ class ContentController extends Controller {
 	 */
 	public function store()
 	{
-		$article = new Shelf\Article;
+		$article = new Article;
 		$article->url = Input::get('url');
 		$article->user_id = Auth::user()->id;
 		$dom = HtmlDomParser::file_get_html($article->url);
