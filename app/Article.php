@@ -9,7 +9,7 @@ class Article extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'shelf_articles';
+	protected $table = 'articles';
 
 
 }
