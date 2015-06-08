@@ -9,7 +9,7 @@ class Bookmark extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'bookmarks';
+	protected $table = 'shelf_bookmarks';
 
 
 }

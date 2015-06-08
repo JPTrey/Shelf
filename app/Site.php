@@ -9,7 +9,7 @@ class Site extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'sites';
+	protected $table = 'shelf_sites';
 
 
 }
