@@ -28,7 +28,7 @@ class ContentController extends Controller {
 		$bookmark = 0;
 		
 		// get article
-		$article = Article::findOrFail($article_id);
+		$article = Shelf\Article::findOrFail($article_id);
 		
 		// // get bookmark, if present
 		// $bookmark_id = DB::table('bookmarks')->where
@@ -64,41 +64,6 @@ class ContentController extends Controller {
 		return 'Video playback is not supported in this build.';
 	}
 
-	public function test() 
-	{
-		// $url = 'http://www.giantbomb.com/articles/koji-igarashi-s-mysterious-new-project-is-bloodsta/1100-5201/';
-		// $url = 'http://www.nytimes.com/2012/01/26/business/ieconomy-apples-ipad-and-the-human-costs-for-workers-in-china.html?_r=4&adxnnl=1&pagewanted=all&adxnnlx=1343278804-Bu4FYq6zJLZ6t2Zo/v46jQ&';
-		// $url = url('/views/nytimes.html');
-		// $url = 'http://www.tested.com/tech/529355-testing-ares-quadcopter-accessories/';
-		// $url = 'https://www.fanfiction.net/s/4943848/3/The-Heart-Never-Lies';
-		$url = 'https://www.fanfiction.net/s/4219558/1/Level-Up-Love';
-		// $url = 'http://www.bbc.com/sport/0/football/32982449';
-		$dom = HtmlDomParser::file_get_html($url);
-
-		// $text = $this->getText($dom);
-
-		$title = $dom->find('title');
-		$text = $this->getText($dom);
-
-		if (sizeof($text) == 0)
-		{
-			return "NULL!";
-		}
-		else 
-		{
-			$has_tags = true;	
-			$article = new Shelf\Article;
-			$article->content = $text;
-			return view('content.article', 
-				[
-					'article' => $article,
-					'title' => $title[0]->plaintext,
-					'has_tags' => $has_tags
-				]
-			);
-		}
-	}
-
 	/**
 	 * GET: /article/add
 	 * Show the form for creating a new resource.
@@ -130,8 +95,7 @@ class ContentController extends Controller {
 		$text = $this->getText($dom);
 		echo "\ntext loaded";
 
-		if (Input::get('check-media'))
-		{
+		
 			$content = '';
 			foreach ($text as $word) 
 			{
@@ -139,12 +103,7 @@ class ContentController extends Controller {
 			}
 
 			$article->content = $content;
-		}
-
-		else
-		{
-			$article->content = $text[0]->plaintext;
-		}
+		
 
 		if (Input::get('title') != null) 
 		{
@@ -216,10 +175,16 @@ class ContentController extends Controller {
 	private function getText($dom) 
 	{
 
-		if (sizeof($dom->find('*[class=story-body-text]')))
+		if (sizeof($dom->find('*[id=storytext]')))
+		{
+			return $dom->find('*[id=storytext]');
+		}
+
+		else if (sizeof($dom->find('*[class=story-body-text]')))
 		{
 			return $dom->find('*[class=story-body-text]');
 		}
+		
 		
 		else if (sizeof($dom->find('*[class=story-body]')))
 		{
@@ -232,10 +197,6 @@ class ContentController extends Controller {
 			return $dom->find('*[class=article-body]');
 		}
 
-		else if (sizeof($dom->find('*[id=storytext]')))
-		{
-			return $dom->find('*[id=storytext]');
-		}
 
 		else if (sizeof($dom->find('*[id=printdetail]')))
 		{
@@ -251,44 +212,6 @@ class ContentController extends Controller {
 		{
 			return $dom->find('article');
 		}
-
-
-
-
-		// if (sizeof($dom->find('*[role=main]')))
-		// {
-		// 	return $dom->find('*[role=main]');
-		// }
-
-		// else if (sizeof($dom->find('article')))
-		// {
-		// 	return $dom->find('article');
-		// }
-
-		// else if (sizeof($dom->find('div[class=story-body]')))
-		// {
-		// 	return $dom->find('div[class=story-body]');
-		// }
-
-		// else if (sizeof($dom->find('p[class=story-body-text]')))
-		// {
-		// 	return $dom->find('p[class=story-body-text]');
-		// }
-
-		// else if (sizeof($dom->find('section[class=article-body]')))
-		// {
-		// 	return $dom->find('section[class=article-body]');
-		// }
-
-		// else if (sizeof($dom->find('div[id=storytext]')))
-		// {
-		// 	return $dom->find('div[id=storytext]');
-		// }
-
-		// else if (sizeof($dom->find('div[id=printdetail]')))
-		// {
-		// 	return $dom->find('div[id=printdetail]');
-		
 		
 		else 
 		{

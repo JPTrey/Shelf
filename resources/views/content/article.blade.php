@@ -43,6 +43,7 @@
 		background: white;
 		margin-bottom: 20px;
 		padding: 5% 5% 10% 5%;
+		font-size: 1.5em;
 	}
 
 	#toolbar {
