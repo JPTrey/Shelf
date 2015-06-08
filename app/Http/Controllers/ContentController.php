@@ -121,10 +121,14 @@ class ContentController extends Controller {
 		echo "storing article: " . Input::get('url');
 		
 		$article = new Shelf\Article;
+		
+		echo "\narticle Model loaded";
 		$article->url = Input::get('url');
 		$article->user_id = Auth::user()->id;
 		$dom = HtmlDomParser::file_get_html($article->url);
+		echo "\nDOM loaded";
 		$text = $this->getText($dom);
+		echo "\ntext loaded";
 
 		if (Input::get('check-media'))
 		{
@@ -154,7 +158,10 @@ class ContentController extends Controller {
 
 		$article->word_count = str_word_count($article->content);
 		$article->was_read = false;
+		
+		echo "\n saving article...";
 		$article->save();
+		echo "done!";
 
 		// remove excess tags
 		// get site_id
