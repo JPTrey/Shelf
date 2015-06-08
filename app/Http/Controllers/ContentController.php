@@ -118,7 +118,7 @@ class ContentController extends Controller {
 	 */
 	public function store()
 	{
-		$article = new Article;
+		$article = new Shelf\Article;
 		$article->url = Input::get('url');
 		$article->user_id = Auth::user()->id;
 		$dom = HtmlDomParser::file_get_html($article->url);
