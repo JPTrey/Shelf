@@ -125,12 +125,6 @@ class ContentController extends Controller {
 		$article->user_id = Auth::user()->id;
 		$dom = HtmlDomParser::file_get_html($article->url);
 		$text = $this->getText($dom);
-		
-		// echo "\n $dom = ";
-		// var_dump($dom);
-		
-		// echo "\n $text = ";
-		// var_dump($text);
 
 		if (Input::get('check-media'))
 		{
