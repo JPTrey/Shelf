@@ -27,6 +27,8 @@ class ContentController extends Controller {
 		$estimate;
 		$bookmark = 0;
 		
+		echo "fetching model...";
+		
 		// get article
 		$article = Shelf\Article::findOrFail($article_id);
 		
