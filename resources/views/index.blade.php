@@ -124,8 +124,7 @@
 		@endif
 
 	@else
-	<h1 <!-- <hr> -->id="no-articles">You don't have any articles saved.  Click <a>here</a> to add.</h1
-		>	
+	<h1 id="no-articles">You don't have any articles saved.  Click <a>here</a> to add.</h1>	
 
 	@endif
 
