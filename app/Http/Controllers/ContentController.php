@@ -23,10 +23,6 @@ class ContentController extends Controller {
 	
 	public function showArticle($article_id)
 	{
-		$article;
-		$estimate;
-		$bookmark = 0;
-		
 		echo "fetching model...";
 		
 		// get article
