@@ -1,6 +1,6 @@
 <?php namespace Shelf\Http\Controllers;
 
-use Shelf\Article;
+use Shelf;
 use Input;
 use DB;
 use Auth;
