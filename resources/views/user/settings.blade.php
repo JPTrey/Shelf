@@ -1,1 +1,4 @@
-hi
+@extends('app')
+
+
+@stop
