@@ -2,6 +2,7 @@
 
 use Auth;
 use Shelf;
+use Input;
 use Shelf\Http\Requests;
 use Shelf\Http\Controllers\Controller;
 
@@ -26,14 +27,14 @@ class UserController extends Controller {
 	
 	public function settings() 
 	{
-		$user = Shelf/User::find(Auth::user()->id);
+		$user = Shelf\User::find(Auth::user()->id);
 		
 		$hideScrollbar = $user->hideScrollbar;
 		$readSpeed = ceil($user->words_per_minute / 60);
 		$autoReadSpeed = $user->autoReadSpeed;
 		$showCompleted = $user->showCompleted;
 
-		return view('settings', 
+		return view('user.settings', 
 			[
 				'hideScrollbar' => $hideScrollbar,
 				'readSpeed' => $readSpeed,
@@ -45,7 +46,7 @@ class UserController extends Controller {
 
 	public function updateSettings() 
 	{
-		$user = Shelf/User::find(Auth::user()->id);
+		$user = Shelf\User::find(Auth::user()->id);
 
 		$user->hideScrollbar = Input::get('hide-scrollbar');
 		$user->words_per_minute = Input::get('read-speed') * 60;
