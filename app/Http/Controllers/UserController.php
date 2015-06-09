@@ -34,7 +34,8 @@ class UserController extends Controller {
 		$autoReadSpeed = $user->autoReadSpeed;
 		$showCompleted = $user->showCompleted;
 
-		return $user->id;
+		return view('user.settings'
+		);
 	}
 
 	public function updateSettings() 
