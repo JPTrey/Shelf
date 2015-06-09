@@ -25,6 +25,8 @@ class UserController extends Controller {
 	
 	public function settings() 
 	{
+		echo "preparing settings page";
+
 		$user = Auth::user();
 		
 		$hideScrollbar = $user->hideScrollbar;
