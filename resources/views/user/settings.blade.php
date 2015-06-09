@@ -5,12 +5,10 @@
 @section('content')
 
 <div class="container">
-	<h1 class="text-center">{{$title}}</h1>
+	<h1 class="text-center">test</h1>
 	<div class="row">
 		<div class="col-md-9">
-			@foreach ($text as $element)
-			<?php echo $element ?>
-			@endforeach
+			
 		</div>		
 		<div class="col-md-3">
 			<h4>Toolbar</h4>
