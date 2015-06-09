@@ -40,9 +40,11 @@ Route::get('/user/stats',
 	]
 );
 
-Route::get('/user/settings', function() {
-		return 'settings';
-	} 
+Route::get('/user/settings', 
+	[
+		'middleware' => 'auth',
+		'uses' => 'UserController@settings'
+	]
 );
 
 Route::post('/user/settings', 

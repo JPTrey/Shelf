@@ -34,7 +34,7 @@ class UserController extends Controller {
 		$autoReadSpeed = $user->autoReadSpeed;
 		$showCompleted = $user->showCompleted;
 
-		return view ('settings', 
+		return view('settings', 
 			[
 				'hideScrollbar' => $hideScrollbar,
 				'readSpeed' => $readSpeed,
