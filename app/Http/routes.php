@@ -47,8 +47,9 @@ Route::get('/user/settings',
 	]
 );
 
-Route::post('/user/settings', 
-	return 'settings';
+Route::post('/user/settings', function() {
+		return 'settings';
+	} 
 );
 
 
