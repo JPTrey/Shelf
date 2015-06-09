@@ -4,16 +4,17 @@
 
 @section('content')
 
-<div class="container">
-	<h1 class="text-center">test</h1>
-	<div class="row">
-		<div class="col-md-9">
-			
-		</div>		
-		<div class="col-md-3">
-			<h4>Toolbar</h4>
-		</div>
-	</div>
+<style type="text/css">
+	body {
+		margin-top: 70px;
+	}
+
+</style>
+
+<div class='container'>
+
+	<h1>My Settings</h1>
+	
 </div>
 
 @stop
