@@ -27,21 +27,7 @@ class UserController extends Controller {
 	
 	public function settings() 
 	{
-		$user = Shelf\User::find(Auth::user()->id);
-		
-		$hideScrollbar = $user->hideScrollbar;
-		$readSpeed = ceil($user->words_per_minute / 60);
-		$autoReadSpeed = $user->autoReadSpeed;
-		$showCompleted = $user->showCompleted;
-
-		return view('user.settings', 
-			[
-				'hideScrollbar' => $hideScrollbar,
-				'readSpeed' => $readSpeed,
-				'autoReadSpeed' => $autoReadSpeed,
-				'showCompleted' => $showCompleted
-			]
-		);
+		return 'hi!';
 	}
 
 	public function updateSettings() 
