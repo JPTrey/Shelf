@@ -27,21 +27,7 @@ class UserController extends Controller {
 	{
 		return "preparing settings page";
 
-		$user = Auth::user();
 		
-		$hideScrollbar = $user->hideScrollbar;
-		$readSpeed = ceil($user->words_per_minute / 60);
-		$autoReadSpeed = $user->autoReadSpeed;
-		$showCompleted = $user->showCompleted;
-
-		return view('settings', 
-			[
-				'hideScrollbar' => $hideScrollbar,
-				'readSpeed' => $readSpeed,
-				'autoReadSpeed' => $autoReadSpeed,
-				'showCompleted' => $showCompleted
-			]
-		);
 	}
 
 	public function updateSettings() 
