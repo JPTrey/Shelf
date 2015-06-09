@@ -9,7 +9,9 @@
 
 <style type="text/css">
 	html, body {
+	 	@if (Auth::user()->hideScrollbar)
 	 	overflow: hidden;
+	 	@endif
 	}
 
 	#content {
@@ -33,7 +35,8 @@
 	}
 
 	body {
-		background: url("{{url('/img/Melamine-wood-001.png')}}");
+		/*background: url("{{url('/img/Melamine-wood-001.png')}}");*/
+		background-color: #899594;
 	}
 
 
@@ -77,9 +80,9 @@
 				<a class="btn btn-default" id="smaller-font"><span class="glyphicon glyphicon-zoom-out"></span></a>
 	    	</div>
 	    	<a class="btn btn-default btn-block" href="{{url('/')}}"><span class="glyphicon glyphicon-chevron-left"></span> Back to Article List</a>
-			<a class="btn btn-primary btn-block" href="{{url('/')}}"><span class="glyphicon glyphicon-tag"></span> Bookmark this Page</a>
-			<a class="btn btn-success btn-block" href="{{url('/')}}"><span class="glyphicon glyphicon-check"></span> Mark as Read</a>
-			<a class="btn btn-danger btn-block" href="{{url('/')}}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+			<a class="btn btn-primary btn-block disabled" href="{{url('/')}}"><span class="glyphicon glyphicon-tag"></span> Bookmark this Page</a>
+			<a class="btn btn-success btn-block" href="{{url('/content/mark/' . $article->id)}}"><span class="glyphicon glyphicon-check"></span> Mark as Read</a>
+			<a class="btn btn-danger btn-block" href="{{url('/content/remove/' . $article->id)}}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
 		</div>
 		<div id="text" class="col-md-9 col-md-offset-1">
 		<h1 class="text-center"><?php echo $article->name ?></h1>

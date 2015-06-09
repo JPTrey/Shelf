@@ -171,7 +171,26 @@ class ContentController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$article = Shelf\Article::findOrFail($id);
+		$article->delete();
+
+		return redirect('/');
+	}
+
+	/**
+	 * Move the specified resource to 'Completed'.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function markRead($id) 
+	{
+		$article = Shelf\Article::findOrFail($id);
+		$article->was_read = true;
+		$article->save();
+
+		return redirect('/');
+
 	}
 
 	private function getText($dom) 

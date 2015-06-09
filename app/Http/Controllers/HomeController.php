@@ -49,6 +49,7 @@ class HomeController extends Controller {
 		{
 			$user = User::findOrFail(Auth::user()->id);
 			$myArticles = Article::where('user_id', $user->id)->orderBy('word_count')->get();
+			$unreadCount = sizeof($myArticles);
 
 			// divide articles into lengths
 			$articles = [];
@@ -56,7 +57,13 @@ class HomeController extends Controller {
 
 			foreach ($myArticles as $item) 
 			{
-				if (($item->word_count / $user->words_per_minute) <= 1)
+				if ($item->was_read)
+				{
+					$articles['complete'][] = $item;
+					$unreadCount--;
+				}
+
+				else if (($item->word_count / $user->words_per_minute) <= 1)
 				{
 					$articles['instant'][] = $item;
 					$hasLengths['instant'] = true;
@@ -101,6 +108,7 @@ class HomeController extends Controller {
 			return view('index', 
 				[
 					'articles' => $articles,
+					'unreadCount' => $unreadCount,
 					'user' => $user,
 					'lengths' => $hasLengths
 				]

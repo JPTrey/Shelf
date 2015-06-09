@@ -40,6 +40,22 @@ Route::get('/user/stats',
 	]
 );
 
+Route::get('/user/settings', 
+	[
+		'middleware' => 'auth',
+		'uses' => 'UserController@settings'
+	]
+);
+
+Route::post('/user/settings', 
+	[
+		'middleware' => 'auth',
+		'uses' => 'UserController@updateSettings'
+	]
+);
+
+
+
 // ContentController
 Route::get('/content/show/{id}', 
 	[
@@ -62,9 +78,23 @@ Route::post('/content/add',
 	]
 );
 
-Route::get('/content/test', 
+Route::get('/content/remove/{id}', 
 	[
 		'middleware' => 'auth',
-		'uses' => 'ContentController@test'
+		'uses' => 'ContentController@destroy'
 	]
 );
+
+Route::get('/content/mark/{id}', 
+	[
+		'middleware' => 'auth',
+		'uses' => 'ContentController@markRead'
+	]
+);
+
+// Route::get('/content/test', 
+// 	[
+// 		'middleware' => 'auth',
+// 		'uses' => 'ContentController@test'
+// 	]
+// );

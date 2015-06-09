@@ -21,6 +21,11 @@
 		margin-bottom: 10px;
 	}
 
+	.article-block-complete {
+		box-shadow: 5px 5px 2px #888888;
+		margin-bottom: 10px;
+		color: #B8BFBE;
+	}
 
 	.section-title {
 		border-bottom: 1px solid #FAFAFA;
@@ -39,7 +44,7 @@
 <div class="container">
 	<div class="row" id="heading">
 		<div class="col-sm-9">
-			<h1 class="text-center" id="shelf-banner">My Shelf</h1>
+			<h1 class="text-center" id="shelf-banner">My Shelf ({{$unreadCount}} unread)</h1>
 		</div>
 		<div class="col-sm-3">
 			@include('content.add')
@@ -117,6 +122,21 @@
 			@foreach ($articles['long'] as $article)
 				<a class="article-link" href="{{url('/content/show/' . $article->id)}}">	
 					<div class="col-sm-8 article-block">
+						<h4 class="article-name">{{ $article->name }}</h4>
+						<p class="read-speed">{{ ceil(($article->word_count / $user->words_per_minute) / 60) }} hrs</p>
+					</div>
+				</a>
+			@endforeach
+		</div> <!-- END ROW long -->
+		@endif
+
+		@if (isset($articles['complete']))
+		<div class="row"> <!-- ROW completed -->
+			<h1 class="section-title">Completed</h1>
+			<!-- <hr> -->
+			@foreach ($articles['complete'] as $article)
+				<a class="article-link" href="{{url('/content/show/' . $article->id)}}">	
+					<div class="col-sm-8 article-block-complete">
 						<h4 class="article-name">{{ $article->name }}</h4>
 						<p class="read-speed">{{ ceil(($article->word_count / $user->words_per_minute) / 60) }} hrs</p>
 					</div>

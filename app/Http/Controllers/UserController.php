@@ -1,5 +1,6 @@
 <?php namespace Shelf\Http\Controllers;
 
+use Auth;
 use Shelf\Http\Requests;
 use Shelf\Http\Controllers\Controller;
 
@@ -24,7 +25,36 @@ class UserController extends Controller {
 	
 	public function settings() 
 	{
-		return view ('settings');
+		$user = Auth::user();
+		
+		$hideScrollbar = $user->hideScrollbar;
+		$readSpeed = ceil($user->words_per_minute / 60);
+		$autoReadSpeed = $user->autoReadSpeed;
+		$showCompleted = $user->showCompleted;
+
+		return view ('settings', 
+			[
+				'hideScrollbar' => $hideScrollbar,
+				'readSpeed' => $readSpeed,
+				'autoReadSpeed' => $autoReadSpeed,
+				'showCompleted' => $showCompleted
+			]
+		);
+	}
+
+	public function updateSettings() 
+	{
+		$user->Auth::user();
+
+		$user->hideScrollbar = Input::get('hide-scrollbar');
+		$user->words_per_minute = Input::get('read-speed') * 60;
+		$user->autoReadSpeed = Input::get('auto-read-speed');
+		$user->showCompleted = Input::get('showCompleted');
+
+		$user->save();
+
+		return redirect('/');
+
 	}
 
 	/**
