@@ -24,7 +24,6 @@
 			<br>
 			<label for="read-speed">My read speed (words per second)</label>
 			<input type="range" name="read-speed" min="1" max="10" value="{{$readSpeed}}">
-			{{$readSpeed}}
 			<br>
 			<input name="auto-read-speed" type="checkbox" checked="{{$autoReadSpeed}}"></input>
 			<label>Analyse my reading speed whenever I mark an article complete</label>
