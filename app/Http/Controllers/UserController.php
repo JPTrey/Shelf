@@ -25,7 +25,7 @@ class UserController extends Controller {
 	
 	public function settings() 
 	{
-		echo "preparing settings page";
+		return "preparing settings page";
 
 		$user = Auth::user();
 		
