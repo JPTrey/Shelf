@@ -48,10 +48,7 @@ Route::get('/user/settings',
 );
 
 Route::post('/user/settings', 
-	[
-		'middleware' => 'auth',
-		'uses' => 'UserController@updateSettings'
-	]
+	return 'settings';
 );
 
 
