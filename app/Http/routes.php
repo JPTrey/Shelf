@@ -40,19 +40,17 @@ Route::get('/user/stats',
 	]
 );
 
-Route::get('/user/settings', 
-	[
-		'middleware' => 'auth',
-		'uses' => 'UserController@settings'
-	]
-);
-
-Route::post('/user/settings', function() {
+Route::get('/user/settings', function() {
 		return 'settings';
 	} 
 );
 
-
+Route::post('/user/settings', 
+	[
+		'middleware' => 'auth',
+		'uses' => 'UserController@updateSettings'
+	]
+);
 
 // ContentController
 Route::get('/content/show/{id}', 
