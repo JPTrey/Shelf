@@ -1,5 +1,5 @@
 @extends('app')
-@section('title') TEST @stop
+@section('title') Settings @stop
 @section('pre-scripts') <link rel="stylesheet" type="text/css" href="{{url('/css/style.css')}}"> @stop
 
 @section('content')
@@ -22,8 +22,8 @@
 			<input name="hide-scrollbar" type="checkbox" checked="{{$hideScrollbar}}"></input>
 			<label for="hide-scrollbar">Hide the scrollbar when reading articles</label>
 			<br>
-			<label for="read-speed">My read speed (words per second)</label>
-			<input type="range" name="read-speed" min="1" max="10" value="{{$readSpeed}}">
+			<label id="label-readspeed" for="read-speed">My read speed ({{$readSpeed}} words per second)</label>
+			<input id="readspeed" type="range" name="read-speed" min="1" max="10" value="{{$readSpeed}}">
 			<br>
 			<input name="auto-read-speed" type="checkbox" checked="{{$autoReadSpeed}}"></input>
 			<label>Analyse my reading speed whenever I mark an article complete</label>
@@ -36,7 +36,16 @@
 		</form>
 		</div>
 	</div>
-	
 </div>
 
+@stop
+
+@section('post-scripts')
+<script type="text/javascript">
+	$("#readspeed").change(function() {
+		var speed = $("#readspeed").val();
+    	var str = "My read speed (" + speed + " words per second)";
+    	$("#label-readspeed").text(str);
+  	});
+</script>
 @stop
