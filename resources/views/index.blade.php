@@ -49,7 +49,7 @@
 	<div class="row" id="heading">
 		<div class="col-sm-9">
 			<h1 class="text-center" id="shelf-banner">My Shelf</h1>
-			<p>({{$unreadCount}} unread)</p>
+			<h4 class="text-center">({{$unreadCount}} unread)</h4>
 		</div>
 		<div class="col-sm-3">
 			@include('content.add')
