@@ -39,12 +39,16 @@
 	#shelf-banner {
 		font-size: 6em;
 	}
+	
+	#unread-count {
+		font-size: 1em;
+	}
 </style>
 
 <div class="container">
 	<div class="row" id="heading">
 		<div class="col-sm-9">
-			<h1 class="text-center" id="shelf-banner">My Shelf ({{$unreadCount}} unread)</h1>
+			<h1 class="text-center" id="shelf-banner">My Shelf <span id="unread-count">({{$unreadCount}} unread)</span></h1>
 		</div>
 		<div class="col-sm-3">
 			@include('content.add')
