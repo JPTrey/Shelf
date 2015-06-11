@@ -114,10 +114,5 @@ class HomeController extends Controller {
 				]
 			);
 		}
-		
-		// else: show welcome screen
-		return view('welcome');
 	}
-
-
 }

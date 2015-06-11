@@ -1,9 +1,47 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
+
+<style type="text/css">
+	body {
+		margin-top: 50px;
+	}
+
+	.project-title {
+		font-size: 7em;
+	}
+
+	.project-tagline {
+		font-size: 3em;
+	}
+
+	.project-info {
+		font-size: 2em;
+	}
+
+	#heading {
+		padding-bottom: 50px;
+	}
+
+</style>
+
+<div class="container">
+	<div class="row" id="heading">
+	    <div class="col-sm-5 col-sm-offset-1">
+	        <h2 class="text-center project-title">Shelf</h2>
+	        <h3 class="text-center project-tagline">Read right.</h3>
+	        <p class="text-center project-info">
+	             Store the web to read on your own time. <em>Shelf</em> removes all the excess, 
+            and organizes everything based on how it'll take you to read.
+	        </p>
+	    </div>
+	    <div class="col-sm-5 col-sm-offset-1">
+	        <img class="img img-responsive thumbnail" src="{{asset('/img/shelf.PNG')}}" />
+	    </div>
+	</div>
+
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">Login</div>
 				<div class="panel-body">
@@ -17,6 +55,8 @@
 							</ul>
 						</div>
 					@endif
+
+					
 
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
